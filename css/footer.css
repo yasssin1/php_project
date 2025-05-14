@@ -1,0 +1,11 @@
+footer {
+    background-color: rgb(100, 100, 100);
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+footer a {
+    padding-right: 30px;
+    text-decoration: none;
+    color: beige;
+}
