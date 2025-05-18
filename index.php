@@ -10,15 +10,7 @@
     <title>php project</title>
 </head>
 <body>
-    <div class = "header" >
-        <img src = "img/logo.png" alt = "logo">
-        <form class = "search_bar">
-            <input type = "text" name = "search_val" placeholder="search">
-            <input type = "submit" value="">
-        </form>
-        <a href="http://localhost/php_project/login.php" class = "account">Compte</a>
-        <a href="http://localhost/php_project/basket.php" class = "icon"><img src = "img/basket.png" alt = "basket"></a>
-    </div>
+    <?php include "./php/header.php"; ?>
     <div class = "main">
         <a href="item.html" class = "product">
             <img src = "img/logo.png">
@@ -85,12 +77,6 @@
             <span>text</span>
         </a>
     </div>
-    <footer>
-        <nav>
-            <a href="index.html">home</a>
-            <a href="login.php">login</a>
-            <a href="basket.php">basket</a>
-        </nav>
-    </footer>
+    <?php include "./php/footer.php"; ?>
 </body>
 </html>

@@ -1,0 +1,67 @@
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+.form-pane {
+    position: absolute;
+    display: grid;
+    grid-template-columns: auto;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    padding: 15px;
+}
+/* .form-tabs{
+    border: none;
+    padding: 20px;
+    background-color: rgb(177, 177, 177);
+    border: 1px solid rgb(151, 151, 151);
+    top: 0px;
+} */
+.form-name {
+    float: left;
+    border: none;
+    padding: 10px;
+    background-color: rgb(134, 168, 199);
+    font-size: 25px;
+}
+.form-name:hover{
+    background-color: rgb(98, 128, 156);
+    cursor: pointer;
+}
+.form-name.active {
+  background-color: rgb(78, 110, 141);
+}
+.tab-content {
+    display: none;
+    width: 60vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    background-color: rgb(159, 191, 221);
+}
+.tab-content input[type="text"]{
+    border: none;
+    height: 18px;
+    align-self: center;
+}
+.tab-content input[type="submit"]{
+    border: none;
+    /* justify-self: center; */
+    text-align: center;
+    padding: 5px;
+    margin-top: 15px;
+    background-color: rgb(126, 126, 238);
+    width: 100px;
+}
+.tab-content input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: rgb(107, 107, 202);
+}
+.form-items {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding-right: 20%;
+    column-gap: 20px;
+}
