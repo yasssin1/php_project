@@ -9,9 +9,10 @@ body {
     background-color: rgb(240, 240, 240);
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 form {
-    padding: 5vw;
+    padding: 3vw;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 50px;
     text-align: center;
@@ -34,7 +35,7 @@ input {
     background-color: rgba(255, 255, 255, 0.726);
 }
 input[type="submit"]{
-    background-color: rgb(33, 122, 201);;
+    background-color: rgb(33, 122, 201);
     transition: 0.3s;
     width: 60%;
     justify-self: center;
@@ -42,4 +43,7 @@ input[type="submit"]{
 input[type="submit"]:hover{
     filter: brightness(80%);
     cursor: pointer;
+}
+a, a:visited, a:hover, a:active {
+  color: rgb(17, 111, 117);;
 }

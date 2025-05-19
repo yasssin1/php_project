@@ -1,5 +1,5 @@
     <div class = "header" >
-        <a href="index.php"><img src = "img/logo.png" alt = "logo"></a>
+        <a href="./"><img src = "img/logo.png" alt = "logo"></a>
         <form class = "search_bar" action = "search.php">
             <input type = "text" name = "search_val" placeholder="search">
             <input type = "submit" value="">

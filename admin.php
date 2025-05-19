@@ -1,3 +1,9 @@
+<?php session_start(); ?>
+<?php if ($_SESSION["type"] != "admin") {
+    header("location: ./");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +12,7 @@
     <title>admin page</title>
     <link rel="stylesheet" href="mystyle.css">
     <link rel="stylesheet" href="./css/formTabs.css">
+    <link rel="stylesheet" href="./css/logout.css">
 </head>
 <body>
     <div class = "main">
@@ -34,6 +41,11 @@
         </form>
     </div>
     </div>
+    <form action="" method="POST" class="logout">
+      <button type="submit" name="submit">
+        <img src="./img/logout.png" alt="Logout" />
+    </button>
+    </form>
     <script>
 function showTab(event, id) {
   var i, tabList, tablinks;
@@ -52,5 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".form-name").click();
 });
 </script>
+<?php
+  if (isset($_POST['submit'])) {
+    session_unset();
+    session_destroy();
+    header("location: ./");
+    exit();
+  }
+?>
 </body>
 </html>

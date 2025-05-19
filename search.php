@@ -1,6 +1,6 @@
 <?php
 if (($_GET["search_val"] ?? "") === "") {
-    header('Location: index.php');
+    header('Location: ./');
     die();
 }
 ?>

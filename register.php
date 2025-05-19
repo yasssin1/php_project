@@ -19,25 +19,25 @@ if (isset($_SESSION["type"])){
     <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
-    <form method = "post">
+    <form method="post">
         <label for = "name">login:</label><input type="text" placeholder="name" name = "name" id = "name" required>
+        <label for = "email">email:</label><input type="text" placeholder="email" name = "email" id = "email" required>
         <label for = "password">password:</label><input type="password" placeholder="password" name = "password" id = "password" required><br>
         <input type="submit">
     </form><br>
-    <a href = "register.php">register?</a>
+    <a href = "login.php">login?</a>
     <?php
-        include "./php/search.php";
+        include "./php/submit.php";
 
         if (isset($_POST['name'])) {
             $name = htmlspecialchars($_POST['name']);
             $pass = $_POST["password"];
-            if($res = search_two($name, $pass, "name", "password", "accounts")) {
-                $_SESSION['user'] = $name; 
-                $_SESSION['type'] = $res["type"]; 
-                header("location: profile.php");
+            $email = htmlspecialchars($_POST['email']);
+            if(submit_account($name, $pass, $email)) {
+                header("location: login.php");
                 exit;
             } else {
-                echo "<p style='color: red;'>Invalid login credentials.</p>";
+                echo "<p style='color: red;'>account not created!</p>";
             }
         }
     ?>
