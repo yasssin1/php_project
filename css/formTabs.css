@@ -46,6 +46,11 @@
     height: 18px;
     align-self: center;
 }
+.tab-content input[type="number"]{
+    border: none;
+    height: 18px;
+    align-self: center;
+}
 .tab-content input[type="submit"]{
     border: none;
     /* justify-self: center; */
@@ -64,4 +69,10 @@
     grid-template-columns: auto 1fr;
     padding-right: 20%;
     column-gap: 20px;
+}
+.tab-content textarea{
+    border: none;
+    height: 36px;
+    margin-bottom: 5px;
+    align-self: center;
 }

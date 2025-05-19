@@ -10,4 +10,14 @@
         
         return $sql->execute() ? true : false ;
     }
+    function submit_product($prodName, $description, $prodImage, $prodPrice, $prodCat, $prodBrand) {
+        global $link;
+                // $sql = $link->prepare("INSERT INTO `products` (`ID`, `name`, `description`, `img`, `price`, `category`, `brand`) VALUES (NULL, ?, ?, NULL, ?, ?, ?)");
+
+        $sql = $link->prepare("INSERT INTO `products` (`ID`, `name`, `description`, `img`, `price`, `category`, `brand`)
+                                            VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+         $sql->bind_param("ssbiss", $prodName, $description, $prodImage, $prodPrice, $prodCat, $prodBrand);
+        
+        return $sql->execute() ? true : false ;
+    }
 ?>
