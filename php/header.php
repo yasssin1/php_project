@@ -4,6 +4,6 @@
             <input type = "text" name = "search_val" placeholder="search">
             <input type = "submit" value="">
         </form>
-        <a href="http://localhost/php_project/login.php" class = "account">Compte</a>
-        <a href="http://localhost/php_project/basket.php" class = "icon"><img src = "img/basket.png" alt = "basket"></a>
+        <a href="./login.php" class = "account">Compte</a>
+        <a href="./basket.php" class = "icon"><img src = "img/basket.png" alt = "basket"></a>
     </div>
