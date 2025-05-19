@@ -12,12 +12,41 @@
     }
     function submit_product($prodName, $description, $prodImage, $prodPrice, $prodCat, $prodBrand) {
         global $link;
-                // $sql = $link->prepare("INSERT INTO `products` (`ID`, `name`, `description`, `img`, `price`, `category`, `brand`) VALUES (NULL, ?, ?, NULL, ?, ?, ?)");
 
         $sql = $link->prepare("INSERT INTO `products` (`ID`, `name`, `description`, `img`, `price`, `category`, `brand`)
                                             VALUES (NULL, ?, ?, ?, ?, ?, ?)");
-         $sql->bind_param("ssbiss", $prodName, $description, $prodImage, $prodPrice, $prodCat, $prodBrand);
+         $sql->bind_param("sssiss", $prodName, $description, $prodImage, $prodPrice, $prodCat, $prodBrand);
         
         return $sql->execute() ? true : false ;
+    }
+    function edit_product($prodID, $column, $new_val) {
+        global $link;
+
+        if ($column == 'price') {
+        $sql = $link->prepare("UPDATE `products` SET `price` = ? WHERE `products`.`ID` = ?");
+        $sql->bind_param("ii", $new_val, $prodID);
+    } else {
+        $sql = $link->prepare("UPDATE `products` SET `$column` = ? WHERE `products`.`ID` = ?");
+        $sql->bind_param("si", $new_val, $prodID);
+    }
+        return $sql->execute() ? true : false ;
+    }
+    function delete_product($prodID) {
+        global $link;
+        $sql = $link->prepare("DELETE FROM products WHERE `products`.`ID` = ?");
+        $sql->bind_param("i", $prodID);
+        return $sql->execute() ? true : false ;
+    }
+    
+    function existsDB($keyword, $column, $table) {
+        global $link;
+        $sql = $link->prepare("SELECT * FROM $table WHERE $column = ?");
+        $sql->bind_param("s", $keyword);
+        $sql->execute();
+        $res = $sql->get_result();
+
+        $row = $res->fetch_assoc();
+
+        return $row ? true : false;
     }
 ?>

@@ -26,4 +26,16 @@
 
         return $row ? $row : false;
     }
+
+    function existsDB($keyword, $column, $table) {
+        global $link;
+        $sql = $link->prepare("SELECT * FROM $table WHERE $column = ?");
+        $sql->bind_param("s", $keyword);
+        $sql->execute();
+        $res = $sql->get_result();
+
+        $row = $res->fetch_assoc();
+
+        return $row ? true : false;
+    }
 ?>

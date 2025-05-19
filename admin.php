@@ -4,6 +4,14 @@
     exit();
 }
 ?>
+<?php
+  if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("location: ./");
+    exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,14 +45,14 @@
         </form>
         <!-- EDIT FORM -->
         <form id="Edit" class="tab-content" method="post" enctype="multipart/form-data"><div class = "form-items">
-          <input type = "hidden" id = "edit">
+            <input type = "hidden" id = "edit">
             <label for="editID">product id:</label><input type = "number" name = "editID" id = "editID" required>
-            <label for="editName">product name:</label><input type = "text" name = "editName" id = "editName" required>
-            <label for="editdescription">product description:</label><textarea name="editdescription" id="editdescription" required></textarea>
+            <label for="editName">product name:</label><input type = "text" name = "editName" id = "editName" >
+            <label for="editdescription">product description:</label><textarea name="editdescription" id="editdescription" ></textarea>
             <label for="editImage">product image:</label><input type = "file" name = "editImage" id = "editImage">
-            <label for="editPrice">product price:</label><input type = "number" name = "editPrice" id = "editPrice" required>
-            <label for="editCat">product category:</label><input type = "text" name = "editCat" id = "editCat" required>
-            <label for="editBrand">product brand:</label><input type = "text" name = "editBrand" id = "editBrand" required>
+            <label for="editPrice">product price:</label><input type = "number" name = "editPrice" id = "editPrice" >
+            <label for="editCat">product category:</label><input type = "text" name = "editCat" id = "editCat" >
+            <label for="editBrand">product brand:</label><input type = "text" name = "editBrand" id = "editBrand" >
         </div>
             <input type="submit" value="Edit">
         </form>
@@ -58,7 +66,7 @@
     </div>
     </div>
     <form action="" method="POST" class="logout">
-      <button type="submit" name="submit">
+      <button type="submit" name="logout">
         <img src="./img/logout.png" alt="Logout" />
     </button>
     </form>
@@ -84,19 +92,16 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- PHP FOR FORM GANDLINFG -->
     <?php
         include "./php/submit.php";
-        var_dump($_FILES);
 
+        // adding code
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
           if (isset($_POST["prodName"])) {
-            echo "<script>alert('prod submited')</script>";
             $prodName = htmlspecialchars($_POST['prodName']);
             $description = htmlspecialchars($_POST['description']);
 
              if (isset($_FILES['prodImage']) && $_FILES['prodImage']['error'] === 0) {
-              // Get the binary data of the uploaded image
               $imgData = file_get_contents($_FILES['prodImage']['tmp_name']);
             } else {
-              // If no image is uploaded, set $imgData to NULL
               $imgData = null;
             }
             
@@ -104,27 +109,62 @@ document.addEventListener("DOMContentLoaded", function () {
             $prodCat = htmlspecialchars($_POST['prodCat']);
             $prodBrand = htmlspecialchars($_POST['prodBrand']);
 
-            echo $prodName;
             if(submit_product($prodName, $description, $imgData, $prodPrice, $prodCat, $prodBrand)) {
                 echo "<p style='color: green;' class='alert'>product added!</p>";
                 echo "<script>alert('prod submited')</script>";
             } else {
                 echo "<p style='color: red;' class='alert'>product not added!</p>";
-                echo "<p style='color: green;' class='alert'>NOT product added!</p>";
+                echo "<script>alert('error submitting!')</script>";
             }
           }
-            
+          //editing code
+          if (isset($_POST["editID"])) {
+            $status = "";
+            $prodID = $_POST["editID"];
+            if (isset($_POST["editName"]) && !empty($_POST["editName"])) {
+              if (edit_product($prodID, "name", $_POST["editName"])){
+                $status .= " name";
+              }
+            }
+            if (isset($_POST["editdescription"]) && !empty($_POST["editdescription"])) {
+              if (edit_product($prodID, "description", $_POST["editdescription"])){
+                $status .= " desc";
+              }
+            }
+            if (isset($_FILES['editImage']) && $_FILES['editImage']['error'] === 0) {
+              $imgData = file_get_contents($_FILES['editImage']['tmp_name']);
+            }
+            if (edit_product($prodID, "img", $imgData)){
+              $status .= " img";
+            }
+            if (isset($_POST["editPrice"]) && !empty($_POST["editPrice"])) {
+              if (edit_product($prodID, "price", $_POST["editPrice"])){
+                $status .= " price";
+              }
+            }
+            if (isset($_POST["editCat"]) && !empty($_POST["editCat"])) {
+              if (edit_product($prodID, "category", $_POST["editCat"])){
+                $status .= " category";
+              }
+            }
+            if (isset($_POST["editBrand"]) && !empty($_POST["editBrand"])) {
+              if (edit_product($prodID, "brand", $_POST["editBrand"])){
+                $status .= " brand";
+              }
+            }
+            echo "<script>alert('$status updated!')</script>";
+          }
+        }
+
+        //DELETE
+        if (isset($_POST["deleteID"])) {
+          if(delete_product($_POST["deleteID"])){
+            echo "<script>alert('delete successful')</script>";
+          }
         }
     ?>
 
 
-<?php
-  if (isset($_POST['submit'])) {
-    session_unset();
-    session_destroy();
-    header("location: ./");
-    exit();
-  }
-?>
+
 </body>
 </html>

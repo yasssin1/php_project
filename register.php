@@ -33,9 +33,19 @@ if (isset($_SESSION["type"])){
             $name = htmlspecialchars($_POST['name']);
             $pass = $_POST["password"];
             $email = htmlspecialchars($_POST['email']);
+
+            if (existsDB($name, "name", "accounts")) {
+                echo "<p style='color: red;'>username taken!</p>";
+                exit();
+            }
+            if (existsDB($email, "email", "accounts")) {
+                echo "<p style='color: red;'>email used!</p>";
+                exit();
+            }
+
             if(submit_account($name, $pass, $email)) {
                 header("location: login.php");
-                exit;
+                exit();
             } else {
                 echo "<p style='color: red;'>account not created!</p>";
             }
