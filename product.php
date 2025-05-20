@@ -23,5 +23,11 @@
         </div>
     </div>
     <?php include "./php/footer.php"; ?>
+    <?php
+    if (isset($_GET['prodID'])) {
+            $id = $_GET['prodID'];
+            //affichage de produit depuis id
+        }
+    ?>
 </body>
 </html>

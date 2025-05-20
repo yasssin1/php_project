@@ -73,3 +73,33 @@
     transition: 0.3s;
     transform: scale(1.2);
 }
+@media (max-width: 768px) {
+.logo {
+    display: none;
+}
+.header {
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    text-align: center;
+    z-index: 0;
+    grid-template-areas: 
+            "account"
+            "search"
+            "icon";
+}
+.search_bar {
+    order: 3;
+    grid-column: span 2;
+}
+
+.account {
+    order: 2;
+}
+
+.header .icon {
+    order: 1;
+}
+}

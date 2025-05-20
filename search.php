@@ -26,15 +26,23 @@ if (($_GET["search_val"] ?? "") === "") {
             <option value="priceAC">price acsending</option>
             <option value="priceDC">price decending</option>
             </select>
+            <input type="hidden" name="search_val" value="<?= htmlspecialchars($_GET['search_val'] ?? '') ?>">
             <input type = "submit" value="filter">
         </form>
     </div>
     <div class = "main">
         <?php include "./php/display.php"; ?>
-        <a href="item.html" class = "product">
+        <div class = "product">
+        <form action = "./product.php" method="GET">
+            <input type = "hidden" id="prodID" name="prodID" value = "12">
             <img src = "img/logo.png">
-            <span>text</span>
-        </a>
+            <input class = "link" type = "submit" value = "Product name">
+        </form>
+            <form action = "" method="Post">
+                <input type = "hidden" id="prodID" name="prodID" value = "12">
+            <input class = "add" type = "submit" value = "+">
+        </div>
+        </form>
     </div>
     <?php include "./php/footer.php"; ?>
 </body>
