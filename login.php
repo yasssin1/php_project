@@ -33,6 +33,7 @@ if (isset($_SESSION["type"])){
             $pass = $_POST["password"];
             if($res = search_two($name, $pass, "name", "password", "accounts")) {
                 $_SESSION['user'] = $name; 
+                $_SESSION['userID'] = $res["ID"];
                 $_SESSION['type'] = $res["type"]; 
                 header("location: profile.php");
                 exit;

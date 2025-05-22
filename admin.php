@@ -133,10 +133,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             if (isset($_FILES['editImage']) && $_FILES['editImage']['error'] === 0) {
               $imgData = file_get_contents($_FILES['editImage']['tmp_name']);
-            }
-            if (edit_product($prodID, "img", $imgData)){
+              if (edit_product($prodID, "img", $imgData)){
               $status .= " img";
             }
+            }
+            
             if (isset($_POST["editPrice"]) && !empty($_POST["editPrice"])) {
               if (edit_product($prodID, "price", $_POST["editPrice"])){
                 $status .= " price";

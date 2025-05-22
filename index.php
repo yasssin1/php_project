@@ -11,71 +11,27 @@
 </head>
 <body>
     <?php include "./php/header.php"; ?>
+
+    <!-- <div class = "main">
+        <div class = "product">
+        <form action = "./product.php" method="GET">
+            <input type = "hidden" id="prodID" name="prodID" value = "12">
+            <img src = "img/logo.png">
+            <input class = "link" type = "submit" value = "Product name">
+        </form>
+            <form action = "" method="Post">
+                <input type = "hidden" id="prodID" name="prodID" value = "12">
+            <input class = "add" type = "submit" value = "+">
+        </div>
+    </div> -->
+
     <div class = "main">
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
-        <a href="item.html" class = "product">
-            <img src = "img/logo.png">
-            <span>text</span>
-        </a>
+    <?php
+    ob_start();
+    include "./php/display.php";
+    $query = "SELECT * FROM products ORDER BY RAND() LIMIT 10";
+    display_products($query);
+    ?>
     </div>
     <?php include "./php/footer.php"; ?>
 </body>

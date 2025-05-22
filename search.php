@@ -26,23 +26,28 @@ if (($_GET["search_val"] ?? "") === "") {
             <option value="priceAC">price acsending</option>
             <option value="priceDC">price decending</option>
             </select>
+            <!-- <select id="sortBrand" name="sortBrand">
+            <option value="HP">HP</option>
+            <option value="priceAC">price acsending</option>
+            <option value="priceDC">price decending</option>
+            </select> -->
             <input type="hidden" name="search_val" value="<?= htmlspecialchars($_GET['search_val'] ?? '') ?>">
             <input type = "submit" value="filter">
         </form>
     </div>
+
     <div class = "main">
-        <?php include "./php/display.php"; ?>
-        <div class = "product">
-        <form action = "./product.php" method="GET">
-            <input type = "hidden" id="prodID" name="prodID" value = "12">
-            <img src = "img/logo.png">
-            <input class = "link" type = "submit" value = "Product name">
-        </form>
-            <form action = "" method="Post">
-                <input type = "hidden" id="prodID" name="prodID" value = "12">
-            <input class = "add" type = "submit" value = "+">
-        </div>
-        </form>
+    <?php
+        ob_start();
+        include "./php/display.php";
+        $name_search = $_GET['search_val'];
+        $sortType = "name";
+        if (isset($_GET['sortType'])) {
+            $sortType = $_GET['sortType'];
+        }
+        $query = "SELECT * FROM products WHERE name LIKE '%$name_search%' ORDER BY $sortType";
+        display_products($query);
+    ?>
     </div>
     <?php include "./php/footer.php"; ?>
 </body>
