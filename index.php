@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +11,23 @@
     <title>php project</title>
 </head>
 <body>
+    <?php
+    include "./php/search.php";
+    include "./php/basket.php";
+    if (isset($_POST["prodID"])){
+        if (!isset($_SESSION["userID"])) {
+            echo "<script>alert('login first'); window.location.href = './login.php';</script>";
+            exit();
+        } else {
+            $id = $_POST["prodID"];
+            $amount = 1;
+            if (add_basket($id, $_SESSION["userID"], $amount)) {
+                echo "<script>alert('added!'); window.location.href = './';</script>";
+            }
+        }
+    }
+    ?>
     <?php include "./php/header.php"; ?>
-
-    <!-- <div class = "main">
-        <div class = "product">
-        <form action = "./product.php" method="GET">
-            <input type = "hidden" id="prodID" name="prodID" value = "12">
-            <img src = "img/logo.png">
-            <input class = "link" type = "submit" value = "Product name">
-        </form>
-            <form action = "" method="Post">
-                <input type = "hidden" id="prodID" name="prodID" value = "12">
-            <input class = "add" type = "submit" value = "+">
-        </div>
-    </div> -->
 
     <div class = "main">
     <?php

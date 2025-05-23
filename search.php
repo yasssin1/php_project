@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 if (($_GET["search_val"] ?? "") === "") {
     header('Location: ./');
@@ -17,6 +18,23 @@ if (($_GET["search_val"] ?? "") === "") {
     <title>search</title>
 </head>
 <body>
+    <?php
+    include "./php/search.php";
+    include "./php/basket.php";
+    if (isset($_POST["prodID"])){
+        if (!isset($_SESSION["userID"])) {
+            echo "<script>alert('login first'); window.location.href = './login.php';</script>";
+            exit();
+        } else {
+            $id = $_POST["prodID"];
+            $search = $_GET['search_val'];
+            $amount = 1;
+            if (add_basket($id, $_SESSION["userID"], $amount)) {
+                echo "<script>alert('added!'); window.location.href = './search.php?search_val=".$search."';</script>";
+            }
+        }
+    }
+    ?>
     <?php include "./php/header.php"; ?>
         <div class = "filter" >
         <form action = "search.php">

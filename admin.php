@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./css/formTabs.css">
     <link rel="stylesheet" href="./css/logout.css">
     <link rel="stylesheet" href="./css/alert.css">
+    <link rel="stylesheet" href="./css/footer.css">
 </head>
 <body>
     <div class = "main">
@@ -165,7 +166,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ?>
 
-
-
+<div style = "position: absolute; bottom: 0;">
+      <footer>
+        <nav>
+            <a href="./">home</a>
+            <a href="adminAcc.php">guerer comptes</a>
+        </nav>
+    </footer>
+</div>
+    
 </body>
 </html>

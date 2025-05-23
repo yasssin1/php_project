@@ -1,0 +1,110 @@
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 95vw;
+    background-color: rgb(64, 108, 255);
+    justify-content: center;
+}
+
+.basket-item {
+    background-color: white;
+    border: 5px solid rgb(64, 108, 255);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.basket-item img {
+    width: 150px;
+    justify-self: center;
+    object-fit: contain;
+    margin: 10px;
+    margin-top: 0;
+}
+
+.product-details {
+    flex: 1;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.basket-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.basket-buttons button {
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.basket-buttons .add {
+    background-color: orange;
+}
+
+.basket-buttons .subtract {
+    background-color: #2196F3;
+}
+
+.basket-buttons .delete {
+    background-color: #f44336;
+}
+
+.basket-buttons button:hover {
+    filter: brightness(85%);
+}
+.total {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+.pay-button {
+    background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    padding: 10px;
+    margin: 10px;
+    width: 40%;
+    border: none;
+    border-radius: 25px;
+    justify-self: center;
+}
+.pay-button:hover{
+    filter: brightness(70%);
+    cursor: pointer;
+}
+.pay-container select{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    padding: 10px;
+    margin: 10px;
+    width: 40%;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+}
+.pay-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pay-container p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}

@@ -10,6 +10,19 @@
         
         return $sql->execute() ? true : false ;
     }
+    function edit_account($ID, $column, $new_val) {
+        global $link;
+        $sql = $link->prepare("UPDATE `accounts` SET `$column` = ? WHERE `accounts`.`ID` = ?");
+        $sql->bind_param("si", $new_val, $ID);
+        
+        return $sql->execute() ? true : false ;
+    }
+    function delete_account($ID) {
+        global $link;
+        $sql = $link->prepare("DELETE FROM `accounts` WHERE `accounts`.`ID` = ?");
+        $sql->bind_param("i", $ID);
+        return $sql->execute() ? true : false ;
+    }
     function submit_product($prodName, $description, $prodImage, $prodPrice, $prodCat, $prodBrand) {
         global $link;
 
